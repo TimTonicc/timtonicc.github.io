@@ -1,0 +1,106 @@
+/* Farben und Grundwerte – hier kannst du das Aussehen schnell anpassen */
+:root {
+  --bg: #fbfaf7;
+  --text: #1f2328;
+  --muted: #5d6470;
+  --accent: #2f6fde;
+  --card: #ffffff;
+  --border: #e6e3dc;
+  --max: 960px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+a { color: var(--accent); }
+
+/* Kopfzeile */
+.site-header {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text);
+  text-decoration: none;
+}
+nav a {
+  margin-left: 1.25rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+nav a:hover { color: var(--text); }
+
+/* Inhalt */
+main {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+section { padding: 3rem 0; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1.1; margin: 0.25rem 0 1rem; }
+h2 { font-size: 1.75rem; margin-top: 0; }
+
+.hero { padding: 5rem 0 4rem; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin: 0;
+}
+.lead { font-size: 1.2rem; color: var(--muted); max-width: 38rem; }
+
+.button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.4rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.button:hover { opacity: 0.9; }
+
+/* Projektkarten */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.card h3 { margin-top: 0; }
+.card p { color: var(--muted); margin-bottom: 0; }
+
+/* Fußzeile */
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+/* Handy */
+@media (max-width: 600px) {
+  .site-header { flex-direction: column; gap: 0.5rem; }
+  nav a { margin: 0 0.6rem; }
+}
