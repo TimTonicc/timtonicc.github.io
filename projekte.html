@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projekte – Tim Eibl</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="index.html">Tim Eibl</a>
+      <nav aria-label="Hauptnavigation">
+        <a href="index.html#arbeitsweise">Arbeitsweise</a>
+        <a href="index.html#toolset">Toolset</a>
+        <a href="projekte.html" aria-current="page">Projekte</a>
+        <a href="index.html#ueber-mich">Über mich</a>
+        <a class="nav-cta" href="index.html#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <div class="wrap">
+        <p class="eyebrow">03 | Projekte</p>
+        <h1 class="gradient-text page-title">Projekte</h1>
+      </div>
+    </section>
+
+    <!-- Passwortabfrage -->
+    <section id="gate" class="gate">
+      <div class="wrap">
+        <form id="unlock" class="gate-card" autocomplete="off">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          <h2>Geschützter Bereich</h2>
+          <p>Die Projektdetails enthalten vertrauliche Kundeninhalte. Bitte gib das Passwort ein, das du von mir erhalten hast.</p>
+          <label for="pw" class="visually-hidden">Passwort</label>
+          <div class="gate-row">
+            <input id="pw" type="password" placeholder="Passwort" required autofocus>
+            <button type="submit" class="btn btn-dark">Entsperren</button>
+          </div>
+          <p id="msg" class="gate-msg" role="alert"></p>
+          <p class="muted small">Noch kein Passwort? <a href="mailto:tim.eibl@hotmail.de?subject=Passwort%20f%C3%BCr%20dein%20Portfolio">Schreib mir</a>.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Hier erscheinen die entschlüsselten Inhalte -->
+    <section id="content" class="projects" hidden>
+      <div class="wrap" id="content-inner"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap"><p>Portfolio Tim Eibl <span id="jahr">2026</span></p></div>
+  </footer>
+
+  <script>
+    document.getElementById("jahr").textContent = new Date().getFullYear();
+
+    // Die Inhalte liegen nur verschlüsselt im Repository (projekte.enc.json).
+    // Entschlüsselung im Browser: PBKDF2-SHA256 + AES-256-GCM (Web Crypto API).
+    const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+
+    async function decrypt(password) {
+      const res = await fetch("projekte.enc.json", { cache: "no-cache" });
+      const d = await res.json();
+      const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveKey"]);
+      const key = await crypto.subtle.deriveKey(
+        { name: "PBKDF2", salt: b64(d.salt), iterations: d.iter, hash: "SHA-256" },
+        base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]
+      );
+      const plain = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(d.iv) }, key, b64(d.ct));
+      return new TextDecoder().decode(plain);
+    }
+
+    function show(html) {
+      document.getElementById("content-inner").innerHTML = html;
+      document.getElementById("gate").hidden = true;
+      document.getElementById("content").hidden = false;
+      if (location.hash) {
+        const el = document.querySelector(location.hash);
+        if (el) el.scrollIntoView();
+      }
+    }
+
+    async function tryUnlock(password, remember) {
+      const msg = document.getElementById("msg");
+      msg.textContent = "Wird entschlüsselt …";
+      try {
+        show(await decrypt(password));
+        msg.textContent = "";
+        if (remember) { try { sessionStorage.setItem("pw", password); } catch (e) {} }
+        return true;
+      } catch (e) {
+        msg.textContent = "Das Passwort stimmt leider nicht.";
+        try { sessionStorage.removeItem("pw"); } catch (e2) {}
+        return false;
+      }
+    }
+
+    document.getElementById("unlock").addEventListener("submit", (e) => {
+      e.preventDefault();
+      tryUnlock(document.getElementById("pw").value, true);
+    });
+
+    // Innerhalb derselben Browser-Sitzung muss das Passwort nicht erneut eingegeben werden.
+    try {
+      const saved = sessionStorage.getItem("pw");
+      if (saved) tryUnlock(saved, false);
+    } catch (e) {}
+  </script>
+</body>
+</html>

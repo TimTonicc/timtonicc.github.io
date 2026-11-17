@@ -1,8 +1,12 @@
 # timtonicc.github.io
 
-Meine persönliche Website, gehostet mit GitHub Pages.
+Portfolio von Tim Eibl, gehostet mit GitHub Pages: https://timtonicc.github.io/
 
-Live: https://timtonicc.github.io/
+- `index.html`: öffentliche Startseite (Kurzvorstellung, Arbeitsweise, Toolset, Über mich, Kontakt)
+- `projekte.html`: passwortgeschützte Projektseite
+- `projekte.enc.json`: die Projektinhalte, **nur verschlüsselt** (AES-256-GCM, Schlüssel per PBKDF2 aus dem Passwort)
+- `style.css`: Aussehen (Farben ganz oben in `:root`)
+- `img/`: öffentliche Bilder
+- `tools/encrypt.py`: verschlüsselt oder entschlüsselt die Projektinhalte
 
-- `index.html` – Inhalt und Struktur der Seite
-- `style.css` – Aussehen (Farben ganz oben in `:root` anpassen)
+Der Klartext der Projektinhalte liegt bewusst nicht im Repository.

@@ -3,59 +3,179 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tim – Meine Website</title>
-  <meta name="description" content="Die persönliche Website von Tim.">
+  <title>Tim Eibl – Service Design & UI/UX Design</title>
+  <meta name="description" content="Portfolio von Tim Eibl, Kommunikationsdesigner (B.A.) mit Schwerpunkt Service Design und UI/UX Design aus Augsburg.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="#">Tim</a>
-    <nav>
-      <a href="#ueber-mich">Über mich</a>
-      <a href="#projekte">Projekte</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
+    <div class="wrap header-inner">
+      <a class="logo" href="#top">Tim Eibl</a>
+      <nav aria-label="Hauptnavigation">
+        <a href="#arbeitsweise">Arbeitsweise</a>
+        <a href="#toolset">Toolset</a>
+        <a href="projekte.html">Projekte</a>
+        <a href="#ueber-mich">Über mich</a>
+        <a class="nav-cta" href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main id="top">
+    <!-- 01 | Kurzvorstellung -->
     <section class="hero">
-      <p class="eyebrow">Willkommen</p>
-      <h1>Hallo, ich bin Tim.</h1>
-      <p class="lead">Das ist meine erste selbst programmierte Website. Hier entsteht nach und nach mein Platz im Netz.</p>
-      <a class="button" href="#projekte">Zu meinen Projekten</a>
-    </section>
-
-    <section id="ueber-mich">
-      <h2>Über mich</h2>
-      <p>Hier kannst du ein paar Sätze über dich schreiben: was du machst, was dich interessiert und warum es diese Seite gibt.</p>
-    </section>
-
-    <section id="projekte">
-      <h2>Projekte</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Diese Website</h3>
-          <p>Selbst gebaut mit HTML und CSS, kostenlos gehostet auf GitHub Pages.</p>
-        </article>
-        <article class="card">
-          <h3>Projekt 2</h3>
-          <p>Platz für dein nächstes Projekt.</p>
-        </article>
-        <article class="card">
-          <h3>Projekt 3</h3>
-          <p>Und noch eins.</p>
-        </article>
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">01 | Kurzvorstellung</p>
+          <h1 class="gradient-text">Hallo!</h1>
+          <p>Mein Name ist Tim Eibl – ich bin studierter Kommunikationsdesigner (B.A.) mit Schwerpunkt in Service Design / UI/UX Design aus Augsburg.</p>
+          <p>In den letzten sechseinhalb Jahren habe ich in einer Werbe- und einer Digitalagentur (weiskind GmbH, TEAM23 GmbH) als Projektmanager, Service Designer und UI/UX Designer gearbeitet. Mit meinem Blick für Struktur und Nutzerbedürfnisse entwickle ich durchdachte, klare und nutzerzentrierte Lösungen.</p>
+          <p>Ich bringe fundierte Expertise im Bereich Design-Systeme mit: vom Aufbau und der Weiterentwicklung skalierbarer Komponentenbibliotheken über die Definition von UI-Standards bis hin zu Dokumentation und Governance – damit Design über Produkte und Teams hinweg konsistent, effizient und langfristig wartbar bleibt.</p>
+          <p>Darüber hinaus verbinde ich als zertifizierter Scrum Product Owner diese gestalterische Perspektive mit agilen Methoden, um Ideen strukturiert, effizient und konsequent auf den Mehrwert ausgerichtet umzusetzen.</p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="projekte.html">Projekte ansehen <span aria-hidden="true">→</span></a>
+            <a class="btn btn-glass" href="#kontakt">Kontakt</a>
+            <img class="badge" src="img/pspo.png" width="53" height="53" alt="Zertifikat Professional Scrum Product Owner I">
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="img/portrait.jpg" width="1036" height="734" alt="Porträt von Tim Eibl">
+        </div>
       </div>
     </section>
 
-    <section id="kontakt">
-      <h2>Kontakt</h2>
-      <p>Du findest mich auf <a href="https://github.com/TimTonicc">GitHub</a>.</p>
+    <!-- 02 | Skillset & Toolset -->
+    <section id="arbeitsweise" class="dark">
+      <div class="wrap">
+        <p class="eyebrow light">02 | Skillset &amp; Toolset</p>
+        <h2>Arbeitsweise</h2>
+        <p class="section-lead">Service- / Digital-Product-Design: Service Design und User Experience als ein durchgängiger Prozess.</p>
+        <div class="grid grid-5">
+          <article class="tile">
+            <h3>Nutzerzentriert</h3>
+            <p>Ausrichtung auf Bedürfnisse, Erwartungen und Erfahrungen der Nutzer.</p>
+          </article>
+          <article class="tile">
+            <h3>Sequenzierung</h3>
+            <p>Aufteilung des Service in zeitliche Phasen (Customer Journey).</p>
+          </article>
+          <article class="tile">
+            <h3>Co-Creation</h3>
+            <p>Einbindung aller Stakeholder (Kund*innen, Mitarbeitende, Partner) in den Gestaltungsprozess.</p>
+          </article>
+          <article class="tile">
+            <h3>Evidenzbasiert</h3>
+            <p>Sichtbarmachen immaterieller Serviceelemente (z.&nbsp;B. durch Artefakte, Touchpoints).</p>
+          </article>
+          <article class="tile">
+            <h3>Ganzheitlichkeit</h3>
+            <p>Betrachtung des gesamten Ökosystems (Frontstage &amp; Backstage).</p>
+          </article>
+        </div>
+
+        <h2 class="sub">Arbeitsmethoden</h2>
+        <div class="grid grid-4">
+          <article class="tile">
+            <h3>Personas</h3>
+            <p>Archetypen üblicher Nutzergruppen.</p>
+          </article>
+          <article class="tile">
+            <h3>Customer Journey Maps</h3>
+            <p>Visualisierung der Kundenerfahrung über alle Kontaktpunkte.</p>
+          </article>
+          <article class="tile">
+            <h3>Service Blueprint</h3>
+            <p>Darstellung der sichtbaren und unsichtbaren Prozesse eines Services.</p>
+          </article>
+          <article class="tile">
+            <h3>Und mehr</h3>
+            <p>Stakeholder Maps, UI Prototyping, Storyboards, Workshops.</p>
+          </article>
+        </div>
+
+        <h2 id="toolset" class="sub">Toolset</h2>
+        <div class="grid grid-3">
+          <article class="tile">
+            <h3>Figma &amp; FigJam</h3>
+            <p>Design-Systeme, Prototyping, User Journey Mapping, …</p>
+          </article>
+          <article class="tile">
+            <h3>KI / Automatisierung</h3>
+            <p>Claude, ChatGPT, Microsoft Copilot, n8n, Agentic AI, Figma Make</p>
+          </article>
+          <article class="tile">
+            <h3>Miro / Mural</h3>
+            <p>Workshops, kollaborativer Austausch</p>
+          </article>
+          <article class="tile">
+            <h3>Jira &amp; Confluence</h3>
+            <p>Projektmanagement, Dokumentation</p>
+          </article>
+          <article class="tile">
+            <h3>Adobe Suite</h3>
+            <p>Photoshop, Illustrator, InDesign, …</p>
+          </article>
+          <article class="tile">
+            <h3>Microsoft Suite</h3>
+            <p>PowerPoint, Excel, Word</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 | Projekte (Teaser, Details passwortgeschützt) -->
+    <section id="projekte">
+      <div class="wrap projects-teaser">
+        <div>
+          <p class="eyebrow">03 | Projekte</p>
+          <h2>Projekte &amp; Berufserfahrung</h2>
+          <p>Design-Systeme, Service Design und UI/UX-Beratung für Kunden aus Versicherung, Bildung und Automotive – mit Workshops, User Testings und Prototypen.</p>
+          <p class="muted">Viele Inhalte sind vertraulich. Die Projektdetails sind deshalb passwortgeschützt – das Passwort bekommst du gerne auf Anfrage.</p>
+        </div>
+        <a class="lock-card" href="projekte.html">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          <span class="lock-title">Zu den Projekten</span>
+          <span class="lock-sub">Passwort erforderlich <span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 04 | Über mich -->
+    <section id="ueber-mich" class="soft">
+      <div class="wrap">
+        <p class="eyebrow">04 | Über mich</p>
+        <h2>Was mache ich außerhalb der Arbeit?</h2>
+        <div class="grid grid-3 hobbies">
+          <figure class="hobby">
+            <img src="img/malerei.jpg" width="700" height="993" alt="Ein eigenes Gemälde im Rahmen an der Wand" loading="lazy">
+            <figcaption>Malerei</figcaption>
+          </figure>
+          <figure class="hobby">
+            <img src="img/wandern.jpg" width="700" height="904" alt="Tim beim Wandern in den Bergen im Winter" loading="lazy">
+            <figcaption>Wandern</figcaption>
+          </figure>
+          <figure class="hobby">
+            <img src="img/kochen.jpg" width="700" height="904" alt="Tim mit einer Pizza im Restaurant" loading="lazy">
+            <figcaption>und zu guter Letzt: <strong>Kochen (&amp; Essen 😊)</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="dark contact">
+      <div class="wrap">
+        <h2>Vielen Dank.</h2>
+        <p class="section-lead">Lust auf einen Austausch? Schreib mir gerne.</p>
+        <a class="btn btn-light" href="mailto:tim.eibl@hotmail.de">tim.eibl@hotmail.de</a>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="jahr">2026</span> Tim</p>
+    <div class="wrap">
+      <p>Portfolio Tim Eibl <span id="jahr">2026</span></p>
+    </div>
   </footer>
 
   <script>
